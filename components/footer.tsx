@@ -13,16 +13,16 @@ export function Footer() {
               <span className="text-2xl font-bold neon-text">VibeVerse</span>
             </Link>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Build immersive 3D rooms, mint them as NFTs, and explore a metaverse of creativity powered by Web3.
+              Build immersive 3D rooms, mint them as NFTs, and explore a metaverse of creativity powered by abdu&dev.
             </p>
             <div className="flex items-center gap-4">
-              <Link href="https://twitter.com" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://twitter.com/AbdurhamanNur" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://github.com/abddunur-dev" className="text-muted-foreground hover:text-primary transition-colors">
                 <Github className="h-5 w-5" />
               </Link>
-              <Link href="https://discord.com" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://discord.com/abdunur_dev" className="text-muted-foreground hover:text-primary transition-colors">
                 <MessageCircle className="h-5 w-5" />
               </Link>
             </div>
