@@ -30,56 +30,14 @@ export function Footer() {
 
           {/* Links */}
           <div>
-            <h3 className="font-bold mb-4">Product</h3>
+            <h3 className="font-bold mb-4">Portfolio</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/features" className="text-muted-foreground hover:text-primary transition-colors">
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link href="/explore" className="text-muted-foreground hover:text-primary transition-colors">
-                  Explore
-                </Link>
-              </li>
-              <li>
-                <Link href="/create" className="text-muted-foreground hover:text-primary transition-colors">
-                  Create
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">
-                  Pricing
+                <Link href="/https://abdudevapp.vercel.app/" className="text-muted-foreground hover:text-primary transition-colors">
+                  About Me
                 </Link>
               </li>
             </ul>
-          </div>
-
-          <div>
-            <h3 className="font-bold mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/careers" className="text-muted-foreground hover:text-primary transition-colors">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
 
         {/* Bottom */}
