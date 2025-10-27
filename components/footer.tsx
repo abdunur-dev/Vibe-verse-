@@ -1,0 +1,100 @@
+import Link from "next/link"
+import { Cable as Cube, Twitter, Github, MessageCircle } from "lucide-react"
+
+export function Footer() {
+  return (
+    <footer className="bg-card/50 border-t border-border py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-4 gap-8 mb-8">
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <Link href="/" className="flex items-center gap-2 mb-4">
+              <Cube className="h-8 w-8 text-primary neon-glow" />
+              <span className="text-2xl font-bold neon-text">VibeVerse</span>
+            </Link>
+            <p className="text-muted-foreground mb-4 max-w-md">
+              Build immersive 3D rooms, mint them as NFTs, and explore a metaverse of creativity powered by Web3.
+            </p>
+            <div className="flex items-center gap-4">
+              <Link href="https://twitter.com" className="text-muted-foreground hover:text-primary transition-colors">
+                <Twitter className="h-5 w-5" />
+              </Link>
+              <Link href="https://github.com" className="text-muted-foreground hover:text-primary transition-colors">
+                <Github className="h-5 w-5" />
+              </Link>
+              <Link href="https://discord.com" className="text-muted-foreground hover:text-primary transition-colors">
+                <MessageCircle className="h-5 w-5" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Links */}
+          <div>
+            <h3 className="font-bold mb-4">Product</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/features" className="text-muted-foreground hover:text-primary transition-colors">
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link href="/explore" className="text-muted-foreground hover:text-primary transition-colors">
+                  Explore
+                </Link>
+              </li>
+              <li>
+                <Link href="/create" className="text-muted-foreground hover:text-primary transition-colors">
+                  Create
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="text-muted-foreground hover:text-primary transition-colors">
+                  Pricing
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-bold mb-4">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/careers" className="text-muted-foreground hover:text-primary transition-colors">
+                  Careers
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom */}
+        <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-muted-foreground">© 2025 VibeVerse. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
