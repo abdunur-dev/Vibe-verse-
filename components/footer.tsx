@@ -19,7 +19,7 @@ export function Footer() {
               <Link href="https://twitter.com/AbdurhamanNur" className="text-muted-foreground hover:text-primary transition-colors">
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link href="https://github.com/abddunur-dev" className="text-muted-foreground hover:text-primary transition-colors">
+              <Link href="https://github.com/abdunur-dev" className="text-muted-foreground hover:text-primary transition-colors">
                 <Github className="h-5 w-5" />
               </Link>
               <Link href="https://discord.com/abdunur_dev" className="text-muted-foreground hover:text-primary transition-colors">
@@ -33,7 +33,7 @@ export function Footer() {
             <h3 className="font-bold mb-4">Portfolio</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/https://abdudevapp.vercel.app" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="https://abdudevapp.vercel.app" className="text-muted-foreground hover:text-primary transition-colors">
                   About Me
                 </Link>
               </li>
