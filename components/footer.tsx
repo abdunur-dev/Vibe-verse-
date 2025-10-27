@@ -39,6 +39,7 @@ export function Footer() {
               </li>
             </ul>
         </div>
+      </div>
 
         {/* Bottom */}
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
