@@ -33,7 +33,7 @@ export function Footer() {
             <h3 className="font-bold mb-4">Portfolio</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/https://abdudevapp.vercel.app/" className="text-muted-foreground hover:text-primary transition-colors">
+                <Link href="/https://abdudevapp.vercel.app" className="text-muted-foreground hover:text-primary transition-colors">
                   About Me
                 </Link>
               </li>
