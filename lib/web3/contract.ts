@@ -1,16 +1,19 @@
 "use client"
 
 import { ethers } from "ethers"
-import { VIBE_ROOM_NFT_ADDRESS } from "./config"
-import type { Room } from "@/types/room"
+
+// ✅ Use your deployed contract address
+export const VIBE_ROOM_NFT_ADDRESS = "0x43fb8df958e7943dcce8ff373dba93dda03abfbc"
 
 // ERC-721 ABI for VibeRoom NFT
 export const VIBE_ROOM_ABI = [
-  "function mintRoom(string memory roomName, string memory colorTheme, string memory metadata) public returns (uint256)",
+  "function mintRoom(string memory roomName, string memory colorTheme, string memory metadata) public payable returns (uint256)",
   "function tokenURI(uint256 tokenId) public view returns (string memory)",
   "function ownerOf(uint256 tokenId) public view returns (address)",
   "function balanceOf(address owner) public view returns (uint256)",
   "function totalSupply() public view returns (uint256)",
+  "function mintPrice() public view returns (uint256)",
+  "function getRoomData(uint256 tokenId) public view returns (string memory roomName, string memory colorTheme, string memory metadata, uint256 timestamp)",
   "event RoomMinted(address indexed owner, uint256 indexed tokenId, string roomName)",
 ]
 
@@ -21,6 +24,17 @@ export interface RoomData {
   objects: string[]
 }
 
+export interface Room {
+  id: string
+  name: string
+  description: string
+  objects: any[]
+  createdAt: string
+  creatorAddress: string
+  nftTokenId: string
+}
+
+// -------------------- Mint Room --------------------
 export async function mintRoomNFT(roomData: RoomData): Promise<string | null> {
   if (typeof window.ethereum === "undefined") {
     alert("Please install MetaMask!")
@@ -31,6 +45,9 @@ export async function mintRoomNFT(roomData: RoomData): Promise<string | null> {
     const provider = new ethers.BrowserProvider(window.ethereum)
     const signer = await provider.getSigner()
     const contract = new ethers.Contract(VIBE_ROOM_NFT_ADDRESS, VIBE_ROOM_ABI, signer)
+
+    // Fetch mint price from contract
+    const mintPrice = await contract.mintPrice()
 
     // Create metadata JSON
     const metadata = JSON.stringify({
@@ -43,10 +60,12 @@ export async function mintRoomNFT(roomData: RoomData): Promise<string | null> {
       ],
     })
 
-    // Mint the NFT
-    const tx = await contract.mintRoom(roomData.roomName, roomData.colorTheme, metadata)
-
+    // Mint the NFT with ETH payment
+    const tx = await contract.mintRoom(roomData.roomName, roomData.colorTheme, metadata, {
+      value: mintPrice,
+    })
     console.log("[v0] Minting transaction sent:", tx.hash)
+
     const receipt = await tx.wait()
     console.log("[v0] Transaction confirmed:", receipt)
 
@@ -57,10 +76,9 @@ export async function mintRoomNFT(roomData: RoomData): Promise<string | null> {
   }
 }
 
+// -------------------- Get User Rooms --------------------
 export async function getUserRooms(address: string): Promise<number> {
-  if (typeof window.ethereum === "undefined") {
-    return 0
-  }
+  if (typeof window.ethereum === "undefined") return 0
 
   try {
     const provider = new ethers.BrowserProvider(window.ethereum)
@@ -73,10 +91,9 @@ export async function getUserRooms(address: string): Promise<number> {
   }
 }
 
+// -------------------- Get All Rooms --------------------
 export async function getAllRooms(): Promise<Room[]> {
-  if (typeof window.ethereum === "undefined") {
-    return []
-  }
+  if (typeof window.ethereum === "undefined") return []
 
   try {
     const provider = new ethers.BrowserProvider(window.ethereum)
@@ -92,11 +109,9 @@ export async function getAllRooms(): Promise<Room[]> {
         const roomData = await contract.getRoomData(i)
         const owner = await contract.ownerOf(i)
 
-        // Parse metadata to get objects
         let objects = []
         try {
           const metadata = JSON.parse(roomData.metadata)
-          // Create mock objects based on metadata
           const objectTypes =
             metadata.attributes?.find((attr: any) => attr.trait_type === "Objects")?.value?.split(", ") || []
           objects = objectTypes.map((type: string, index: number) => ({
